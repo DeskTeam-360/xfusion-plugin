@@ -212,7 +212,7 @@ function xfirr_render_picker_gate(): string
                 '<td>' + escHtml(r.employee_name) + '</td>' +
                 '<td>' + escHtml(r.year) + '</td>' +
                 '<td>' + escHtml(r.group_name) + '</td>' +
-                '<td><span class="' + statusBadgeClass(r.status) + '">' + escHtml(statusLabel(r.status)) + '</span><br>' + access + '</td>' +
+                '<td><span class="' + statusBadgeClass(r.status) + '">' + escHtml(statusLabel(r.status)) + '</span> ' + access + '</td>' +
                 '<td><button type="button" class="xirr-badge green xirr-picker-open-btn" data-open="' + r.id + '">' + (isPublished ? 'View' : 'Open') + '</button></td>' +
                 '</tr>';
         });
