@@ -138,6 +138,7 @@ function xfirr_render_picker_gate(): string
 #xfirr-picker label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:.3rem}
 #xfirr-picker select,#xfirr-picker input{margin:0 0 .65rem;width:100%;box-sizing:border-box}
 #xfirr-picker button{width:100%;margin-top:.25rem}
+#xfirr-picker .xirr-table button{width:auto!important;margin-top:0!important;padding:.35rem .75rem!important;font-size:.75rem!important;line-height:1.4!important}
 #xfirr-picker .xfirr-field-gap{margin-top:.5rem}
 #xfirr-picker .xirr-badge.gray{background:#f3f4f6;color:#4b5563}
 </style>
@@ -197,9 +198,12 @@ function xfirr_render_picker_gate(): string
         }
         var html = '<div class="xirr-table-scroll"><table class="xirr-table"><thead><tr><th>Employee</th><th>Year</th><th>Group</th><th>Status</th><th></th></tr></thead><tbody>';
         reviews.forEach(function (r) {
-            var access = r.can_edit
-                ? '<span class="xirr-badge green">Editable</span>'
-                : (r.is_self ? '<span class="xirr-badge amber">Your review</span>' : '<span class="xirr-badge gray">View only</span>');
+            var isPublished = String(r.status || '').toLowerCase() === 'published';
+            var access = isPublished
+                ? '<span class="xirr-badge gray">Locked</span>'
+                : (r.can_edit
+                    ? '<span class="xirr-badge green">Editable</span>'
+                    : (r.is_self ? '<span class="xirr-badge amber">Your review</span>' : '<span class="xirr-badge gray">View only</span>'));
             html += '<tr>' +
                 '<td>' + escHtml(r.employee_name) + '</td>' +
                 '<td>' + escHtml(r.year) + '</td>' +
