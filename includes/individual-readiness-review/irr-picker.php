@@ -131,10 +131,13 @@ function xfirr_render_picker_gate(): string
 
 <style><?php echo $css; ?>
 #xfirr-picker h2{margin:0 0 .3rem;font-size:22px;color:var(--navy)}
-#xfirr-picker h3{margin:0 0 .5rem;font-size:15px;color:var(--navy);text-transform:uppercase;letter-spacing:.03em}
-#xfirr-picker .xfirr-gate-columns{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem}
+#xfirr-picker h3{margin:0 0 .35rem;font-size:1.05rem;color:var(--navy)}
+#xfirr-picker .xfirr-gate-columns{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,7fr);gap:0;align-items:start;margin-top:1.25rem;border:1px solid var(--border);border-radius:.5rem;overflow:hidden}
 @media(max-width:1024px){#xfirr-picker .xfirr-gate-columns{grid-template-columns:1fr}}
-#xfirr-picker .xfirr-gate-col{border:1px solid var(--border);border-radius:.5rem;padding:1.1rem 1.25rem;background:#fafafa}
+#xfirr-picker .xfirr-gate-col{min-width:0;padding:1.25rem 1.35rem;background:#fff;border-right:1px solid var(--border)}
+#xfirr-picker .xfirr-gate-col+.xfirr-gate-col{background:#fafbfc;border-right:none}
+@media(max-width:1024px){#xfirr-picker .xfirr-gate-col{border-right:none;border-bottom:1px solid var(--border)}
+#xfirr-picker .xfirr-gate-col+.xfirr-gate-col{border-bottom:none}}
 #xfirr-picker label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:.3rem}
 #xfirr-picker select,#xfirr-picker input{margin:0 0 .65rem;width:100%;box-sizing:border-box}
 #xfirr-picker button{width:100%;margin-top:.25rem}
