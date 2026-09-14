@@ -597,18 +597,18 @@ var xfwRenderAllMeetings = function () {
     }
 
     html += '<div class="xfw-meetings-table-wrap"><table class="xfw-table"><thead><tr>' +
-        '<th>Timing</th><th>Group</th><th>With</th><th>Your role</th><th>Scheduled</th><th></th>' +
+        '<th>Timing</th><th>Group</th><th>With</th><th>Your role</th><th></th>' +
         '</tr></thead><tbody>';
 
     pageRows.forEach(function (m) {
         var fmt = xfwFormatMeetingDate(m.scheduled_at);
         var timing = xfwMeetingTiming(m);
         var btnLabel = m.status === 'in_progress' ? 'Resume' : (m.status === 'completed' ? 'View' : 'Open');
-        html += '<tr><td><span class="xfw-badge ' + timing.badge + '">' + xfwEsc(timing.label) + '</span></td>' +
+        html += '<tr><td><span class="xfw-badge ' + timing.badge + '">' + xfwEsc(timing.label) + '</span>' +
+            '<div class="xfw-meeting-when">' + xfwEsc(fmt.date) + ' ' + xfwEsc(fmt.time) + '</div></td>' +
             '<td>' + xfwEsc(m.group ? m.group.title : '—') + '</td>' +
             '<td>' + xfwEsc(m.counterpart_name || '—') + '</td>' +
             '<td><span class="xfw-badge amber">' + xfwEsc(m.user_role || '') + '</span></td>' +
-            '<td>' + xfwEsc(fmt.date) + ' ' + xfwEsc(fmt.time) + '</td>' +
             '<td><button type="button" class="xfw-badge green xfw-meeting-open-btn" data-open-meeting-id="' + m.id + '">' + btnLabel + '</button></td></tr>';
     });
 
