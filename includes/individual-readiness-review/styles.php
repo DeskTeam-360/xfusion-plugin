@@ -237,7 +237,7 @@ select.xirr-input[multiple]{min-height:4.75rem;padding:.35rem}
 .xirr-dot.blue{background:#2563eb}
 .xirr-dot.gray{background:#9ca3af}
 .xirr-table-scroll{overflow-x:auto}
-table.xirr-table{width:100%;border-collapse:collapse;font-size:15px}
+table.xirr-table{width:100%;border-collapse:collapse;font-size:.8rem}
 table.xirr-table th{text-align:left;padding:.65rem .75rem;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border);font-size:.75rem;text-transform:uppercase;letter-spacing:.03em}
 table.xirr-table td{padding:.85rem .75rem;border-bottom:1px solid var(--border);vertical-align:top}
 table.xirr-table tr:last-child td{border-bottom:none}

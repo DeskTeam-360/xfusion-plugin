@@ -247,7 +247,7 @@ select.xarr-input[multiple]{min-height:4.75rem;padding:.35rem}
 .xarr-dot.amber{background:#ca8a04}
 .xarr-dot.red{background:#dc2626}
 .xarr-table-scroll{overflow-x:auto}
-table.xarr-table{width:100%;border-collapse:collapse;font-size:15px}
+table.xarr-table{width:100%;border-collapse:collapse;font-size:.8rem}
 table.xarr-table th{text-align:left;padding:.65rem .75rem;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border);font-size:.75rem;text-transform:uppercase;letter-spacing:.03em}
 table.xarr-table td{padding:.85rem .75rem;border-bottom:1px solid var(--border);vertical-align:top}
 table.xarr-table tr:last-child td{border-bottom:none}
