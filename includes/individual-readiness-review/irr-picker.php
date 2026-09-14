@@ -138,7 +138,8 @@ function xfirr_render_picker_gate(): string
 #xfirr-picker label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:.3rem}
 #xfirr-picker select,#xfirr-picker input{margin:0 0 .65rem;width:100%;box-sizing:border-box}
 #xfirr-picker button{width:100%;margin-top:.25rem}
-#xfirr-picker .xirr-table button{width:auto!important;margin-top:0!important;padding:.35rem .75rem!important;font-size:.75rem!important;line-height:1.4!important}
+#xfirr-picker .xirr-picker-open-btn{appearance:none;-webkit-appearance:none;margin:0;padding:.15rem .55rem !important;border-radius:999px;font-size:16px !important;font-weight:600;line-height:1.25;border:1px solid #86efac !important;background:#dcfce7 !important;color:#166534 !important;cursor:pointer;font-family:inherit;white-space:nowrap;width:auto !important;min-height:0;min-width:0;box-shadow:none !important;text-transform:none;letter-spacing:normal;vertical-align:middle}
+#xfirr-picker .xirr-picker-open-btn:hover{background:#bbf7d0 !important;color:#166534 !important}
 #xfirr-picker .xfirr-field-gap{margin-top:.5rem}
 #xfirr-picker .xirr-badge.gray{background:#f3f4f6;color:#4b5563}
 </style>
@@ -209,7 +210,7 @@ function xfirr_render_picker_gate(): string
                 '<td>' + escHtml(r.year) + '</td>' +
                 '<td>' + escHtml(r.group_name) + '</td>' +
                 '<td><span class="' + statusBadgeClass(r.status) + '">' + escHtml(statusLabel(r.status)) + '</span><br>' + access + '</td>' +
-                '<td><button type="button" class="xirr-btn xirr-btn-outline xirr-btn-sm" data-open="' + r.id + '">Open &rarr;</button></td>' +
+                '<td><button type="button" class="xirr-badge green xirr-picker-open-btn" data-open="' + r.id + '">' + (isPublished ? 'View' : 'Open') + '</button></td>' +
                 '</tr>';
         });
         html += '</tbody></table></div>';
