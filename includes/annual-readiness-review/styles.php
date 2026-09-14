@@ -175,6 +175,7 @@ select.xarr-input[multiple]{min-height:4.75rem;padding:.35rem}
 .xarr-prio-grid-1{grid-template-columns:1fr}
 .xarr-prio-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .xarr-icon-btn{position:absolute;top:0;right:0;width:32px;height:32px;border:none;background:transparent;color:var(--muted);cursor:pointer;border-radius:.375rem;font-size:1.1rem;line-height:1;padding:0;display:flex;align-items:center;justify-content:center}
+.xarr-recommendation-actions .xarr-icon-btn{position:static;width:28px;height:28px}
 .xarr-icon-btn:hover{color:#b91c1c;background:#fef2f2}
 .xarr-prio-delete{background:transparent !important;color:#87B14B !important;text-decoration:none !important}
 .xarr-prio-delete:hover{background:transparent !important;color:#E1706D !important;text-decoration:none !important}
