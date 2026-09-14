@@ -605,8 +605,8 @@ var xfwRenderAllMeetings = function () {
         var timing = xfwMeetingTiming(m);
         var btnLabel = m.status === 'in_progress' ? 'Resume' : (m.status === 'completed' ? 'View' : 'Open');
         var groupLabel = (m.group ? m.group.title : '—') + (m.user_role ? ' (' + m.user_role + ')' : '');
-        html += '<tr><td><span class="xfw-badge ' + timing.badge + '">' + xfwEsc(timing.label) + '</span>' +
-            '<div class="xfw-meeting-when">' + xfwEsc(fmt.date) + ' ' + xfwEsc(fmt.time) + '</div></td>' +
+        html += '<tr><td><div class="xfw-meeting-timing-cell"><span class="xfw-badge ' + timing.badge + '">' + xfwEsc(timing.label) + '</span>' +
+            '<span class="xfw-meeting-when">' + xfwEsc(fmt.date) + ' ' + xfwEsc(fmt.time) + '</span></div></td>' +
             '<td>' + xfwEsc(groupLabel) + '</td>' +
             '<td>' + xfwEsc(m.counterpart_name || '—') + '</td>' +
             '<td><button type="button" class="xfw-badge green xfw-meeting-open-btn" data-open-meeting-id="' + m.id + '">' + btnLabel + '</button></td></tr>';
