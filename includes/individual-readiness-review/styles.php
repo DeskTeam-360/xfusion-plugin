@@ -188,8 +188,9 @@ select.xirr-input[multiple]{min-height:4.75rem;padding:.35rem}
 .xirr-review-status{color:var(--green);font-size:14px;font-weight:600;margin-top:.15rem}
 .xirr-activate-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
 .xirr-activate-card{border:1px solid var(--border);border-radius:.5rem;padding:1rem;background:#fafafa}
-.xirr-activate-card img{display:block;width:40px;height:40px;object-fit:contain;margin-bottom:.65rem}
-.xirr-activate-card h4{margin:0 0 .35rem;font-size:15px;font-weight:700;color:var(--navy);text-transform:none;letter-spacing:0}
+.xirr-activate-card-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+.xirr-activate-card img{display:block;width:32px;height:32px;object-fit:contain;flex-shrink:0}
+.xirr-activate-card h4{margin:0;font-size:15px;font-weight:600;color:var(--navy);text-transform:none;letter-spacing:0}
 .xirr-activate-card p{margin:0;font-size:14px}
 .xirr-action-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
 .xirr-action-card{border:1px solid var(--border);border-radius:.5rem;padding:1.1rem;background:#fff;display:flex;flex-direction:column;align-items:flex-start}

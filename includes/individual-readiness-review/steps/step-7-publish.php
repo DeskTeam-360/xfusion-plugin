@@ -101,8 +101,9 @@ function xfirr_wizard_publish_init_js(): string
         var grid = document.getElementById('xirr-publish-actions');
         if (!grid) return;
         grid.innerHTML = PUBLISH_ACTIONS.map(function (a) {
-            return '<div class="xirr-activate-card"><img src="' + a[0] + '" alt="">' +
-                '<h4>' + a[1] + '</h4><p>' + a[2] + '</p></div>';
+            return '<div class="xirr-activate-card">' +
+                '<div class="xirr-activate-card-head"><img src="' + a[0] + '" alt=""><h4>' + a[1] + '</h4></div>' +
+                '<p>' + a[2] + '</p></div>';
         }).join('');
     }
 
