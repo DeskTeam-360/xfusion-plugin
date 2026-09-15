@@ -480,6 +480,8 @@ table.xarr-table.xarr-table-gaps .xarr-gap-priority{width:12%;white-space:nowrap
 .xarr-synth-row:last-child{border-bottom:none;padding-bottom:0}
 .xarr-synth-row:first-child{padding-top:0}
 .xarr-synth-icon{width:40px;height:40px;border-radius:50%;background:#eef4fc;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.xarr-synth-icon img{width:100%;height:100%;object-fit:contain;display:block}
+.xarr-synth-icon:has(img){width:40px;height:40px;background:transparent;border-radius:0}
 .xarr-synth-body{flex:1;min-width:0}
 .xarr-synth-body h4{margin:0 0 .2rem;font-size:15px;color:var(--navy);text-transform:none;letter-spacing:0}
 .xarr-synth-body p{margin:0;font-size:14px;color:var(--muted)}
