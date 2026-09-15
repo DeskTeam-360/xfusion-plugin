@@ -212,9 +212,6 @@ var loadWizardDraft = function (force) {
                 window.xfwDraftCache.data = { employee: {}, leader: {}, conversation: {} };
             } else {
                 window.xfwDraftCache.data = json.data;
-                console.log('[XFW PREP DEBUG] your_role=', json.data.your_role,
-                    'employee keys=', Object.keys(json.data.employee || {}),
-                    'leader keys=', Object.keys(json.data.leader || {}));
                 // Laravel resolves the role for THIS conversation's pairing
                 // directly - authoritative, unlike the picker's client-side
                 // scan across every pair the user belongs to (which can pick
