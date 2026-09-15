@@ -121,6 +121,15 @@ function xfirr_wizard_publish_init_js(): string
             setPublishStatus('', false);
         }
 
+        if (typeof window.xfirrRefreshStepProgress === 'function') {
+            window.xfirrRefreshStepProgress().then(function () {
+                renderReview();
+                if (isReviewPublished()) {
+                    setPublishStatus('This review has been published and is locked.', false);
+                }
+            });
+        }
+
         ['xirr-confirm-1', 'xirr-confirm-2', 'xirr-confirm-3'].forEach(function (id) {
             var el = document.getElementById(id);
             if (el && !isReviewPublished()) {
