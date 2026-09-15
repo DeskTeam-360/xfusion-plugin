@@ -169,8 +169,19 @@ var xfwRenderSidebarStatus = function (status) {
     if (!statusEl) {
         return;
     }
-    xfwWireStatusSelect();
     var key = String(status || 'scheduled').toLowerCase();
+
+    // Only the leader can move a meeting to In Progress — that transition
+    // reveals both sides' private preparation (see updateConversationStatus()
+    // server-side). Letting the employee drive this control would let them
+    // flip it themselves and see the leader's preparation before the leader
+    // has actually started the meeting.
+    if (window.XFW_WIZARD && window.XFW_WIZARD.userRole !== 'leader') {
+        statusEl.innerHTML = '<span class="xfw-badge ' + xfwStatusBadgeClass(key) + '">' + xfwFormatStatusLabel(key) + '</span>';
+        return;
+    }
+
+    xfwWireStatusSelect();
     var sel = statusEl.querySelector('#xfw-si-status-select');
     if (!sel) {
         var html = '<select class="xfw-input xfw-status-select" id="xfw-si-status-select">';
