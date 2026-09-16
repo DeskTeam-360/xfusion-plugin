@@ -252,8 +252,7 @@ function xfqbr_render_picker_gate(): string
             return;
         }
         if (listRes.has_access === false) {
-            body.innerHTML = '<h2>Quarterly Business Review™</h2>' +
-                '<p class="xqbr-muted">You are not a member of any organization yet, so you do not have access to any Quarterly Business Review™. Contact your administrator if you believe this is a mistake.</p>';
+            window.location.href = '/resources/resource-menu/';
             return;
         }
 

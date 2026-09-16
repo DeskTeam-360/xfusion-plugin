@@ -240,8 +240,7 @@ function xfarr_render_picker_gate(): string
             return;
         }
         if (listRes.has_access === false) {
-            body.innerHTML = '<h2>Annual Readiness Review&trade; (ARR)</h2>' +
-                '<p class="xarr-muted">You are not a member of any organization yet, so you do not have access to any Annual Readiness Review™. Contact your administrator if you believe this is a mistake.</p>';
+            window.location.href = '/resources/resource-menu/';
             return;
         }
 

@@ -238,8 +238,7 @@ function xfarp_render_picker_gate(): string
             return;
         }
         if (listRes.has_access === false) {
-            body.innerHTML = '<h2>Annual Readiness Plan™</h2>' +
-                '<p class="xar-muted">You are not a member of any organization yet, so you do not have access to any Annual Readiness Plan™. Contact your administrator if you believe this is a mistake.</p>';
+            window.location.href = '/resources/resource-menu/';
             return;
         }
 
