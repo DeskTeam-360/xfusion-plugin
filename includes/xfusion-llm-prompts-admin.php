@@ -10,6 +10,24 @@ defined('ABSPATH') || exit;
 add_action('admin_menu', 'xfusion_llm_prompts_register_admin_menu');
 add_action('admin_init', 'xfusion_llm_prompts_handle_actions');
 
+// Runs after every submenu under 'xfusion-llm-prompts' has registered
+// (the History pages hook admin_menu at priority 82/83) so the flyout is
+// completely empty — clicking "LLM Prompts" in the sidebar still opens the
+// Overview page directly, and Overview links to History pages by URL.
+add_action('admin_menu', 'xfusion_llm_prompts_hide_all_submenu_items', 100);
+
+function xfusion_llm_prompts_hide_all_submenu_items(): void
+{
+    foreach ([
+        'xfusion-llm-prompts',
+        'xfusion-oo-brief-history',
+        'xfusion-oo-synthesis-history',
+        'xfusion-arp-ai-review-history',
+    ] as $pageSlug) {
+        remove_submenu_page('xfusion-llm-prompts', $pageSlug);
+    }
+}
+
 function xfusion_llm_prompts_register_admin_menu(): void
 {
     if (! current_user_can('manage_options')) {
