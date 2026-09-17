@@ -368,8 +368,7 @@ function xfirr_render_picker_gate(): string
             return;
         }
         if (res.has_access === false) {
-            body.innerHTML = '<h2>Individual Readiness Review&trade;</h2>' +
-                '<p class="xirr-muted">You are not a member of any company group yet, so you do not have access to Individual Readiness Reviews. Contact your administrator if you believe this is a mistake.</p>';
+            window.location.href = '/resources/resource-menu/';
             return;
         }
         render(res.data || {}, !!res.can_create);
