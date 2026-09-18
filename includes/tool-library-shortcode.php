@@ -203,6 +203,20 @@ function xfusion_tool_library_shortcode($atts = []): string
             border-radius: .5rem;
             padding: .65rem .85rem;
             cursor: pointer;
+            transition: .3s;
+            top: 0;
+        }
+
+        .xfusion-tool-library-row:hover {
+            top: -3px;
+        }
+
+        .xfusion-tool-library-row span {
+            transition: .3s;
+        }
+
+        .xfusion-tool-library-row:hover span {
+            color: #ffc807 !important;
         }
 
         .xfusion-tool-library-row-main {
