@@ -108,7 +108,7 @@ function xfusion_tool_library_shortcode($atts = []): string
 ?>
         <div class="xfusion-tool-library-pills">
             <?php foreach ($tools as $tool) : ?>
-                <a href="<?php echo esc_url(add_query_arg('btn-close', 'true', $tool->url)); ?>" class="xfusion-tool-library-pill">
+                <a href="<?php echo esc_url(add_query_arg('btn-close', 'true', $tool->url)); ?>" target="_blank" class="xfusion-tool-library-pill">
                     <span class="xfusion-tool-library-pill-text">
                         <?php echo esc_html($tool->page_title ?: $tool->course_title); ?>
                     </span>
@@ -127,6 +127,7 @@ function xfusion_tool_library_shortcode($atts = []): string
                 border-radius: .35rem;
                 padding: .65rem .9rem;
                 position: relative;
+                top: 0;
                 transition: .3s;
             }
 
@@ -137,6 +138,7 @@ function xfusion_tool_library_shortcode($atts = []): string
             .xfusion-tool-library-pill-text {
                 width: 100%;
                 font-size: 20px;
+                font-weight: 600;
                 padding: 0;
                 text-align: left;
                 color: #c6c6c6;
@@ -177,7 +179,7 @@ function xfusion_tool_library_shortcode($atts = []): string
         <?php foreach ($tools as $tool) : ?>
             <?php $active = $tagsByTool[(int) $tool->id] ?? []; ?>
             <div class="xfusion-tool-library-row">
-                <a href="<?php echo esc_url(add_query_arg('btn-close', 'true', $tool->url)); ?>" class="xfusion-tool-library-row-main">
+                <a href="<?php echo esc_url(add_query_arg('btn-close', 'true', $tool->url)); ?>" target="_blank" class="xfusion-tool-library-row-main">
                     <?php if (! empty($tool->icon)) : ?>
                         <?php if (str_starts_with((string) $tool->icon, 'http')) : ?>
                             <img class="xfusion-tool-library-icon" src="<?php echo esc_url($tool->icon); ?>" alt="" width="28" height="28">
