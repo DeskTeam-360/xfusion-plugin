@@ -60,13 +60,13 @@ function xfusion_tool_library_find_group(int $groupId, string $groupTitle)
     return null;
 }
 
-/** @return list<object> each {id, course_title, page_title, icon} */
+/** @return list<object> each {id, course_title, page_title, icon, url} */
 function xfusion_tool_library_find_tools(int $groupId): array
 {
     global $wpdb;
 
     return $wpdb->get_results($wpdb->prepare(
-        "SELECT cl.id, cl.course_title, cl.page_title, cl.icon
+        "SELECT cl.id, cl.course_title, cl.page_title, cl.icon, cl.url
          FROM {$wpdb->prefix}course_group_details cgd
          INNER JOIN {$wpdb->prefix}course_lists cl ON cl.id = cgd.course_list_id
          WHERE cgd.course_group_id = %d
@@ -157,7 +157,7 @@ function xfusion_tool_library_shortcode($atts = []): string
         <?php foreach ($tools as $tool) : ?>
             <?php $active = $tagsByTool[(int) $tool->id] ?? []; ?>
             <div class="xfusion-tool-library-row">
-                <div class="xfusion-tool-library-row-main">
+                <a href="<?php echo esc_url($tool->url); ?>"> class="xfusion-tool-library-row-main">
                     <?php if (! empty($tool->icon)) : ?>
                         <?php if (str_starts_with((string) $tool->icon, 'http')) : ?>
                             <img class="xfusion-tool-library-icon" src="<?php echo esc_url($tool->icon); ?>" alt="" width="28" height="28">
@@ -165,8 +165,8 @@ function xfusion_tool_library_shortcode($atts = []): string
                             <span class="xfusion-tool-library-icon xfusion-tool-library-icon-emoji"><?php echo esc_html($tool->icon); ?></span>
                         <?php endif; ?>
                     <?php endif; ?>
-                    <a class="xfusion-tool-library-title"><?php echo esc_html($tool->page_title ?: $tool->course_title); ?></a>
-                </div>
+                    <span class="xfusion-tool-library-title"><?php echo esc_html($tool->page_title ?: $tool->course_title); ?></span>
+                </a>
                 <div class="xfusion-tool-library-tags">
                     <?php foreach ($capabilities as $title => $meta) : ?>
                         <?php $isActive = in_array($title, $active, true); ?>
@@ -198,10 +198,11 @@ function xfusion_tool_library_shortcode($atts = []): string
             align-items: center;
             justify-content: space-between;
             gap: .75rem;
-            background: #fff;
+            background: transparent;
             border: 1px solid #e5e7eb;
             border-radius: .5rem;
-            padding: .65rem .85rem
+            padding: .65rem .85rem;
+            cursor: pointer;
         }
 
         .xfusion-tool-library-row-main {
@@ -212,7 +213,7 @@ function xfusion_tool_library_shortcode($atts = []): string
         }
 
         .xfusion-tool-library-icon {
-            width: 28px;
+            width: 60px;
             height: 28px;
             flex-shrink: 0;
             object-fit: contain
@@ -228,7 +229,7 @@ function xfusion_tool_library_shortcode($atts = []): string
 
         .xfusion-tool-library-title {
             font-weight: 600;
-            color: #1f2937;
+            color: #c6c6c6 !important;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis
