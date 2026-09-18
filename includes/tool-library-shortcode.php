@@ -157,7 +157,7 @@ function xfusion_tool_library_shortcode($atts = []): string
         <?php foreach ($tools as $tool) : ?>
             <?php $active = $tagsByTool[(int) $tool->id] ?? []; ?>
             <div class="xfusion-tool-library-row">
-                <a href="<?php echo esc_url($tool->url); ?>"> class="xfusion-tool-library-row-main">
+                <a href="<?php echo esc_url(add_query_arg('btn-close', 'true', $tool->url)); ?>" class="xfusion-tool-library-row-main">
                     <?php if (! empty($tool->icon)) : ?>
                         <?php if (str_starts_with((string) $tool->icon, 'http')) : ?>
                             <img class="xfusion-tool-library-icon" src="<?php echo esc_url($tool->icon); ?>" alt="" width="28" height="28">
@@ -213,7 +213,7 @@ function xfusion_tool_library_shortcode($atts = []): string
         }
 
         .xfusion-tool-library-icon {
-            width: 60px;
+            width: 48px;
             height: 28px;
             flex-shrink: 0;
             object-fit: contain
