@@ -108,7 +108,11 @@ function xfusion_tool_library_shortcode($atts = []): string
 ?>
         <div class="xfusion-tool-library-pills">
             <?php foreach ($tools as $tool) : ?>
-                <div class="xfusion-tool-library-pill"><?php echo esc_html($tool->page_title ?: $tool->course_title); ?></div>
+                <a href="<?php echo esc_url(add_query_arg('btn-close', 'true', $tool->url)); ?>" class="xfusion-tool-library-pill">
+                    <span class="xfusion-tool-library-pill-text">
+                        <?php echo esc_html($tool->page_title ?: $tool->course_title); ?>
+                    </span>
+                </a>
             <?php endforeach; ?>
         </div>
         <style>
@@ -120,12 +124,28 @@ function xfusion_tool_library_shortcode($atts = []): string
 
             .xfusion-tool-library-pill {
                 background: #1e2a4a;
-                color: #fff;
-                font-weight: 600;
-                text-align: center;
                 border-radius: .35rem;
                 padding: .65rem .9rem;
-                font-size: .95rem
+                position: relative;
+                transition: .3s;
+            }
+
+            .xfusion-tool-library-pill:hover {
+                top: -4px;
+            }
+
+            .xfusion-tool-library-pill-text {
+                width: 100%;
+                font-size: 20px;
+                padding: 0;
+                text-align: left;
+                color: #c6c6c6;
+                display: block;
+                transition: .3s;
+            }
+
+            .xfusion-tool-library-pill:hover .xfusion-tool-library-pill-text {
+                color: #ffc807;
             }
         </style>
     <?php
@@ -203,12 +223,13 @@ function xfusion_tool_library_shortcode($atts = []): string
             border-radius: .5rem;
             padding: .65rem .85rem;
             cursor: pointer;
+            position: relative;
             transition: .3s;
             top: 0;
         }
 
         .xfusion-tool-library-row:hover {
-            top: -3px;
+            top: -4px;
         }
 
         .xfusion-tool-library-row span {
