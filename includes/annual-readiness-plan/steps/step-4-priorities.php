@@ -83,14 +83,8 @@ function xfarp_wizard_strategic_init_js(): string
         return html;
     }
 
-    function readinessIndicatorOptions(selected) {
-        var names = readinessNames();
-        asArray(selected).forEach(function (n) {
-            if (n && names.indexOf(n) === -1) {
-                names.push(n);
-            }
-        });
-        return names.map(function (n) {
+    function readinessIndicatorOptions() {
+        return readinessNames().map(function (n) {
             return { value: n, label: n };
         });
     }
@@ -172,7 +166,7 @@ function xfarp_wizard_strategic_init_js(): string
             '</div>' +
             '<div class="xar-prio-grid xar-prio-grid-2">' +
             field('Related Organizational KPI(s)', false, '<select class="xar-input" data-key="org_kpi">' + opts(ORG_KPIS, item.org_kpi) + '</select>') +
-            multiCheckboxField('Related Readiness Indicator(s)', false, 'readiness_indicator', readinessIndicatorOptions(item.readiness_indicator), asArray(item.readiness_indicator), 'No readiness priorities yet — add one in Step 3') +
+            multiCheckboxField('Related Readiness Indicator(s)', false, 'readiness_indicator', readinessIndicatorOptions(), asArray(item.readiness_indicator).filter(function (n) { return readinessNames().indexOf(n) !== -1; }), 'No readiness priorities yet — add one in Step 3') +
             '</div>' +
             '<div class="xar-prio-grid xar-prio-grid-1">' +
             multiCheckboxField('Executive Owner(s)', true, 'executive_owner_user_ids', OWNERS, item.executive_owner_user_ids, 'No group members found') +
