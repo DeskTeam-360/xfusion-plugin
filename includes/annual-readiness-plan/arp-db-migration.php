@@ -117,7 +117,7 @@ function xfusion_arp_maybe_migrate_tables(): void
         target_date date NULL,
         success_measures text NULL,
         org_kpi varchar(80) NULL,
-        readiness_indicator varchar(80) NULL,
+        readiness_indicator text NULL COMMENT 'JSON array of Step 3 Priority Name values',
         related_groups text NULL COMMENT 'JSON array of wp_company_groups.id',
         kpi text NULL,
         status varchar(20) NOT NULL DEFAULT 'not_started',
