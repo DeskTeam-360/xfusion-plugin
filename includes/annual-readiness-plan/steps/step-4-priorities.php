@@ -89,12 +89,6 @@ function xfarp_wizard_strategic_init_js(): string
         });
     }
 
-    function opts(list, selected) {
-        return list.map(function (o) {
-            return '<option value="' + o.value + '"' + (o.value === selected ? ' selected' : '') + '>' + o.label + '</option>';
-        }).join('');
-    }
-
     function escAttr(s) {
         return String(s || '')
             .replace(/&/g, '&amp;')
@@ -139,7 +133,7 @@ function xfarp_wizard_strategic_init_js(): string
             target_date: '',
             description: '',
             success_measures: '',
-            org_kpi: 'leadership_effectiveness',
+            org_kpi: [],
             readiness_indicator: [],
             related_groups: [],
         };
@@ -165,7 +159,7 @@ function xfarp_wizard_strategic_init_js(): string
             field('Success Measures', true, '<textarea class="xar-input" rows="3" data-key="success_measures" placeholder="How will success be measured?...">' + escHtml(item.success_measures) + '</textarea>') +
             '</div>' +
             '<div class="xar-prio-grid xar-prio-grid-2">' +
-            field('Related Organizational KPI(s)', false, '<select class="xar-input" data-key="org_kpi">' + opts(ORG_KPIS, item.org_kpi) + '</select>') +
+            multiCheckboxField('Related Organizational KPI(s)', false, 'org_kpi', ORG_KPIS, asArray(item.org_kpi), 'No organizational KPIs available') +
             multiCheckboxField('Related Readiness Indicator(s)', false, 'readiness_indicator', readinessIndicatorOptions(), asArray(item.readiness_indicator).filter(function (n) { return readinessNames().indexOf(n) !== -1; }), 'No readiness priorities yet — add one in Step 3') +
             '</div>' +
             '<div class="xar-prio-grid xar-prio-grid-1">' +

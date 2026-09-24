@@ -116,7 +116,7 @@ function xfusion_arp_maybe_migrate_tables(): void
         owner_user_ids text NULL COMMENT 'JSON array of wp_users.ID',
         target_date date NULL,
         success_measures text NULL,
-        org_kpi varchar(80) NULL,
+        org_kpi text NULL COMMENT 'JSON array of organizational KPI slugs',
         readiness_indicator text NULL COMMENT 'JSON array of Step 3 Priority Name values',
         related_groups text NULL COMMENT 'JSON array of wp_company_groups.id',
         kpi text NULL,
