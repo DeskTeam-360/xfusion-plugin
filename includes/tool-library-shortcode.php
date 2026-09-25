@@ -287,7 +287,8 @@ function xfusion_tool_library_shortcode($atts = []): string
 
         @media (max-width:640px) {
             .xfusion-tool-library-grid {
-                grid-template-columns: 1fr
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
             }
 
             .xfusion-tool-library-row {
