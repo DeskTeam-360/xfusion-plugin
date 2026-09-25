@@ -213,6 +213,24 @@ function xfusion_tool_library_shortcode($atts = []): string
             .xfusion-tool-library-grid {
                 grid-template-columns: 1fr
             }
+
+            .xfusion-tool-library-row {
+                flex-wrap: wrap;
+                flex-direction: column;
+            }
+
+            .xfusion-tool-library-row-main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .xfusion-tool-library-title {
+                white-space: wrap;
+                text-align: center;
+            }
         }
 
         .xfusion-tool-library-row {
