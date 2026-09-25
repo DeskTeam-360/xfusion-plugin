@@ -209,30 +209,6 @@ function xfusion_tool_library_shortcode($atts = []): string
             gap: .75rem
         }
 
-        @media (max-width:640px) {
-            .xfusion-tool-library-grid {
-                grid-template-columns: 1fr
-            }
-
-            .xfusion-tool-library-row {
-                flex-wrap: wrap;
-                flex-direction: column;
-            }
-
-            .xfusion-tool-library-row-main {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .xfusion-tool-library-title {
-                white-space: wrap;
-                text-align: center;
-            }
-        }
-
         .xfusion-tool-library-row {
             display: flex;
             align-items: center;
@@ -307,6 +283,30 @@ function xfusion_tool_library_shortcode($atts = []): string
             color: #fff;
             font-size: .75rem;
             font-weight: 700
+        }
+
+        @media (max-width:640px) {
+            .xfusion-tool-library-grid {
+                grid-template-columns: 1fr
+            }
+
+            .xfusion-tool-library-row {
+                flex-wrap: wrap;
+                flex-direction: column;
+            }
+
+            .xfusion-tool-library-row-main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .xfusion-tool-library-title {
+                white-space: wrap;
+                text-align: center;
+            }
         }
     </style>
 <?php
