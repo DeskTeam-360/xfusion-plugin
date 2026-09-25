@@ -66,6 +66,18 @@ function xfarp_wizard_strategic_init_js(): string
         if (value === null || value === undefined || value === '') {
             return [];
         }
+        // Laravel stores multi-selects as JSON text — parse back for checkboxes.
+        if (typeof value === 'string') {
+            var trimmed = value.trim();
+            if (trimmed.charAt(0) === '[') {
+                try {
+                    var parsed = JSON.parse(trimmed);
+                    if (Array.isArray(parsed)) {
+                        return parsed.filter(Boolean).map(String);
+                    }
+                } catch (e) { /* fall through */ }
+            }
+        }
         return [String(value)];
     }
 
@@ -155,7 +167,7 @@ function xfarp_wizard_strategic_init_js(): string
             field('Target Completion Date', true, '<input type="date" class="xar-input" data-key="target_date" value="' + escAttr(item.target_date) + '">') +
             '</div>' +
             '<div class="xar-prio-grid xar-prio-grid-2">' +
-            field('Description', false, '<textarea class="xar-input" rows="3" data-key="description" placeholder="Describe this strategic priority...">' + escHtml(item.description) + '</textarea>') +
+            field('Description', false, '<textarea class="xar-input" rows="3" data-key="description" placeholder="Describe this strategic priority...">' + escHtml(String(item.description || '').trim()) + '</textarea>') +
             field('Success Measures', true, '<textarea class="xar-input" rows="3" data-key="success_measures" placeholder="How will success be measured?...">' + escHtml(item.success_measures) + '</textarea>') +
             '</div>' +
             '<div class="xar-prio-grid xar-prio-grid-2">' +
