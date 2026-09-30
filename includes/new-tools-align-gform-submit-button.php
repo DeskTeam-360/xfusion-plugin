@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Just a css for new tools page to align submit button.
+ * CSS for specific LearnDash topic pages.
  *
  * @package XFusion
  */
@@ -11,6 +11,10 @@ if (! defined('ABSPATH')) {
 }
 
 add_action('wp_head', function () {
+
+    if (! is_singular('sfwd-topic')) {
+        return;
+    }
 
     $allowed_pages = [
         'situational-leadership-scenarios-tactics-exercise-new',
@@ -27,38 +31,36 @@ add_action('wp_head', function () {
         'rubric-for-assessing-meeting-effectiveness-new',
         'q20-new',
         'gpi-assessment-new',
-
         'self-awareness-and-our-performance-narrative-new',
         'self-reflective-awareness-checklist-new',
         'fear-and-vulnerability-exercise-new',
         'emotional-comfort-zone-new',
         'cognitive-checkin-exercises-new',
         'abc-worksheet-new',
-
         'individual-performance-plan-template-new',
         'work-identification-prioritization-new',
         'smart-goal-worksheet-new',
         'development-vs-performance-goal-setting-activity-new',
         'accomplishment-tracking-new',
         'saying-no-scripts-worksheet-new',
-
         'fill-buckets-new',
         'meaningful-relationships-activity-new',
         'social-media-detox-new',
-
         'problem-solving-template-new',
         'swot-analysis-new',
-
         'igniting-my-purpose-new',
         'legacy-roadmap-new',
         'mattering-swot-new',
     ];
 
-    if (is_page($allowed_pages)) {
-        echo '<style>
+    if (in_array(get_post_field('post_name', get_queried_object_id()), $allowed_pages, true)) {
+?>
+        <style>
             input.gform_button {
+                position: relative !important;
                 top: 113px !important;
             }
-        </style>';
+        </style>
+<?php
     }
 });
