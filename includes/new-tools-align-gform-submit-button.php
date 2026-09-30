@@ -10,57 +10,56 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-add_action('wp_head', function () {
+$topic_positions = [
+    'situational-leadership-scenarios-tactics-exercise-new' => 70,
+    'leadership-impact-legacy-roadmap-new' => 70,
+    'conflict-resolution-tool-new' => 160,
+    'communication-tracker-new' => 150,
+    'psychological-safety-inventory-new' => 90,
+    'performance-improvement-plan-case-studies-new' => 160,
+    'p-e-s-t-situational-analysis-tool-new' => 70,
+    'sop-building-tool-new' => 130,
+    'raci-accountability-matrix-new' => 150,
+    'stop-start-continue-exercise-new' => 70,
+    'rubric-for-assessing-meeting-effectiveness-new' => 70,
+    'self-awareness-and-our-performance-narrative-new' => 13,
+    'self-reflective-awareness-checklist-new' => 130,
+    'fear-and-vulnerability-exercise-new' => 130,
+    'emotional-comfort-zone-new' => 0,
+    'cognitive-checkin-exercises-new' => 90,
+    'abc-worksheet-new' => 90,
+    'individual-performance-plan-template-new' => 70,
+    'work-identification-prioritization-new' => 70,
+    'smart-goal-worksheet-new' => 70,
+    'development-vs-performance-goal-setting-activity-new' => 70,
+    'accomplishment-tracking-new' => 70,
+    'saying-no-scripts-worksheet-new' => 70,
+    'meaningful-relationships-activity-new' => 130,
+    'social-media-detox-new' => 90,
+    'problem-solving-template-new' => 70,
+    'swot-analysis-new' => 70,
+    'igniting-my-purpose-new' => 15,
+    'legacy-roadmap-new' => 160,
+];
 
-    if (! is_singular('sfwd-topic')) {
+add_action('wp_head', function () use ($topic_positions) {
+    if (!is_singular('sfwd-topic')) {
         return;
     }
 
-    $allowed_pages = [
-        'situational-leadership-scenarios-tactics-exercise-new',
-        'leadership-impact-legacy-roadmap-new',
-        'burnout-inventory-tool-for-leaders-new',
-        'conflict-resolution-tool-new',
-        'communication-tracker-new',
-        'psychological-safety-inventory-new',
-        'performance-improvement-plan-case-studies-new',
-        'p-e-s-t-situational-analysis-tool-new',
-        'sop-building-tool-new',
-        'raci-accountability-matrix-new',
-        'start-stop-continue-exercise-new',
-        'rubric-for-assessing-meeting-effectiveness-new',
-        'q20-new',
-        'gpi-assessment-new',
-        'self-awareness-and-our-performance-narrative-new',
-        'self-reflective-awareness-checklist-new',
-        'fear-and-vulnerability-exercise-new',
-        'emotional-comfort-zone-new',
-        'cognitive-checkin-exercises-new',
-        'abc-worksheet-new',
-        'individual-performance-plan-template-new',
-        'work-identification-prioritization-new',
-        'smart-goal-worksheet-new',
-        'development-vs-performance-goal-setting-activity-new',
-        'accomplishment-tracking-new',
-        'saying-no-scripts-worksheet-new',
-        'fill-buckets-new',
-        'meaningful-relationships-activity-new',
-        'social-media-detox-new',
-        'problem-solving-template-new',
-        'swot-analysis-new',
-        'igniting-my-purpose-new',
-        'legacy-roadmap-new',
-        'mattering-swot-new',
-    ];
+    $slug = get_post_field('post_name', get_queried_object_id());
 
-    if (in_array(get_post_field('post_name', get_queried_object_id()), $allowed_pages, true)) {
-?>
-        <style>
-            input.gform_button {
-                position: relative !important;
-                top: 113px !important;
-            }
-        </style>
-<?php
+    if (!array_key_exists($slug, $topic_positions)) {
+        return;
     }
+
+    $top = $topic_positions[$slug];
+?>
+    <style>
+        input[type="submit"].gform_button {
+            position: relative !important;
+            top: <?php echo esc_html($top); ?>px !important;
+        }
+    </style>
+<?php
 });
